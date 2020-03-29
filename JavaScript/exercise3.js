@@ -28,7 +28,5 @@ function ForeignStudent(lastName,firstName,id,nationality){
   }
 
 }
-
-console.log(stud.toString())
 exports.Student = Student;
 exports.ForeignStudent = ForeignStudent;
