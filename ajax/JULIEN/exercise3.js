@@ -1,25 +1,18 @@
-"use strict";
-
 function play_slideshow () {
-	var xhr = new XMLHttpRequest();
-	var resp;
-	xhr.open("GET", "slides.json");
-	xhr.onload = function () {
-		resp = this.responseText;
-		let json = JSON.parse(resp);
-
-		let slide;
+	var ourRequest = new XMLHttpRequest();
+	var texteReponse;
+	ourRequest.open("GET", "slides.json");
+	ourRequest.onload = function () {
+		texteReponse = this.responseText;
+		var json = JSON.parse(texteReponse);
+		var slide;
 		for(slide of json.slides) {
 			setTimeout(display_slide, 1000*slide.time, slide.url);
-		}
-	};
-	xhr.send();
+		}}
+	ourRequest.send();
 }
-
 function display_slide (url) {
-
-	let main = document.getElementById("MAIN");
+	var main = document.getElementById("MAIN");
 	main.innerHTML = "";
-
 	main.innerHTML =  "<iframe src=\"" + url + "\"></iframe>"
 }
