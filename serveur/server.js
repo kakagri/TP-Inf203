@@ -24,14 +24,14 @@ var server= http.createServer(function(request,response){
         var name=my_url.query['name'].trim();
         console.log(name);
         response.writeHead(200,"OK",{'Content-Type':'text/html','charset':'utf-8'});
-        var rep="<html><head><meta charset='utf-8'></head><body>hello "+name+"</body></html>";
-        console.log(rep);
+        var rep="<html><head><meta charset='utf-8'></head><body>Hello "+name+"</body></html>";
         response.write(rep);
         response.end();
 
       }
       else{
-      fs.readFile('.'+my_path,null,
+      console.log(path);
+      fs.readFile('.'+my_path,
           function(error,data){
             if(error){
               response.writeHead(404);
@@ -41,7 +41,8 @@ var server= http.createServer(function(request,response){
               response.write(data);
             }
             response.end();
-          })
+          });
+
         }
     }
     catch(e){
