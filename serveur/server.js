@@ -22,8 +22,11 @@ var server= http.createServer(function(request,response){
     try{
       if(my_path==='/hello'){
         var name=my_url.query['name'];
+        console.log(name);
         response.writeHead(200,"OK",{'Content-Type':'text/html','charset':'utf-8'});
-        response.write('hello '+name);
+        var rep="<html><head><meta charset='utf-8'></head><body>hello "+name+"</body></html>";
+        console.log(rep);
+        response.write(rep);
         response.end();
 
       }
