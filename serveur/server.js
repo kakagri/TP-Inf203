@@ -60,7 +60,10 @@ var server= http.createServer(function(request,response){
               response.end();
             });}
           else{
-          fs.readFile('.'+my_path,
+          if(my_path.startsWith('/files/')){
+            console.log(my_path);
+            console.log(my_path.substr(6,my_path.length-5));
+          fs.readFile('.'+(my_path.substr(6,my_path.length-5)),
             function(error,data){
               if(error){
                 response.writeHead(404);
@@ -71,6 +74,10 @@ var server= http.createServer(function(request,response){
             }
             response.end();
           });}
+          else{
+            response.end();
+          }
+        }
         }
 
         }
