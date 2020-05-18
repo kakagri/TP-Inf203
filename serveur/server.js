@@ -37,7 +37,7 @@ var server= http.createServer(function(request,response){
               response.writeHead(404);
               response.write('Erreur: fichier non trouve');}
             else{
-              response.writeHead(200,"OK",{'Content-type':mime.lookup('.'+my_path)});
+              response.writeHead(200,"OK",{'Content-type':mime.lookup(my_path)});
               response.write(data);
             }
             response.end();
