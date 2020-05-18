@@ -29,23 +29,17 @@ var server= http.createServer(function(request,response){
 
       }
       else{
-        if(my_path.includes('..')){
-          response.writeHead(200,"OK",{'Content-Type':'text/html','charset':'utf-8'});
-          response.write("tentative d'accès fichier parent, accès refusé");
-          reponse.end();
-        }
-        else{
           fs.readFile('.'+my_path,
             function(error,data){
               if(error){
                 response.writeHead(404);
                 response.write('Erreur: fichier non trouve');}
                 else{
-                  response.writeHead(200,"OK",{'Content-type':mime.lookup(my_path)});
+                  response.writeHead({'Content-type':mime.lookup(my_path)});
                   response.write(data);
             }
             response.end();
-          });}
+          });
 
         }
     }
