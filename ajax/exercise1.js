@@ -1,28 +1,24 @@
-
-var couleurs=["violet","gray","slateblue","dodgerblue","tomato","gray", "cyan", "gold", "magenta"]
-function loadDoc(){
-var ourRequest = new XMLHttpRequest();
-
-ourRequest.open('GET','text.txt');
-ourRequest.onload= function(){
-  var textarea= document.getElementById("textarea")
-  textarea.value=ourRequest.responseText;
+function loadDoc () {
+	var ourRequest = new XMLHttpRequest();
+	ourRequest.open("GET", "text.txt");
+	ourRequest.onload = function() {
+		document.getElementById("textarea").innerHTML = this.responseText;
+	}
+	ourRequest.send();
 }
-ourRequest.send();
-}
-
-function loadDoc2(){
-  var ourRequest=new XMLHttpRequest();
-  ouRequest.open('GET','text.txt');
-  ourRequest.onload= function(){
-    var div=document.getElementById("textarea2");
-    var par=ourRequest.responseText.split("<br/>");
-    for (var k=0; k<par.length; k++){
-      var p=document.createElement("p");
-      p.value=par[i];
-      p.style.color=couleurs[i%9];
-      div.appendChild('p');
-    }
-  }
-  ourRequest.send();
+function loadDoc2 () {
+	var ourRequest = new XMLHttpRequest();
+	ourRequest.open("GET", "text.txt");
+	ourRequest.onload = function() {
+		let textarea = document.getElementById("textarea2");
+		let par = this.responseText.split("<br/>");
+		let couleurs = ["red", "green", "blue", "black"];
+		for (var i=0;i<par.length;i++) {
+			var p = document.createElement("p");
+			p.innerHTML = par[i%4];
+			p.style.color = couleurs[i%4];
+			textarea.appendChild(p);
+		}
+	}
+	ourRequest.send();
 }
