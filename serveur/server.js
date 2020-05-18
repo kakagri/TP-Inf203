@@ -31,7 +31,7 @@ var server= http.createServer(function(request,response){
       }
       else{
       console.log(path);
-      fs.readFile('.'+my_path,
+      fs.readFile('.'+(my_path.replace('..','')),
           function(error,data){
             if(error){
               response.writeHead(404);
